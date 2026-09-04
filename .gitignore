@@ -1,0 +1,16 @@
+.DS_Store
+node_modules
+dist
+out
+*.local
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.workbuddy

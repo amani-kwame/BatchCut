@@ -1,0 +1,80 @@
+{
+  "name": "batch-cut",
+  "version": "1.0.1",
+  "author": {
+    "name": "Cooper",
+    "email": "p.k.12345@foxmail.com"
+  },
+  "description": "视频批量剪辑工具 - 基于 FFmpeg 的桌面端视频片段提取与命名水印工具",
+  "license": "MIT",
+  "main": "./out/main/index.js",
+  "scripts": {
+    "dev": "chcp 65001 && electron-vite dev",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview",
+    "dist": "npm run build && electron-builder",
+    "dist:win": "npm run build && electron-builder --win",
+    "dist:mac": "npm run build && electron-builder --mac",
+    "typecheck": "vue-tsc --noEmit && tsc --noEmit -p tsconfig.node.json"
+  },
+  "dependencies": {
+    "naive-ui": "^2.39.0",
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "@electron-toolkit/preload": "^3.0.1",
+    "@electron-toolkit/tsconfig": "^1.0.1",
+    "@electron-toolkit/utils": "^3.0.0",
+    "@types/node": "^20.14.0",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3",
+    "electron-vite": "^2.3.0",
+    "typescript": "^5.5.2",
+    "vfonts": "^0.0.3",
+    "vite": "^5.3.1",
+    "vue-tsc": "^2.0.21"
+  },
+  "build": {
+    "appId": "com.batchcut.app",
+    "productName": "批量剪辑",
+    "copyright": "Copyright © 2026",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "out/**/*",
+      "resources/**/*"
+    ],
+    "icon": "resources/icon.png",
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "category": "public.app-category.video"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "批量剪辑"
+    }
+  }
+}
