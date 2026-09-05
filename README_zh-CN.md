@@ -24,6 +24,13 @@
 | 无显卡门槛 | 纯 CPU 即可工作，**不依赖 CUDA / NVENC / VideoToolbox**，老旧笔记本 / 集显台式机流畅运行 |
 | 跨平台打包 | electron-builder 一键打包 Windows / macOS / Linux，安装包仅几十 MB |
 
+## 界面预览
+
+| 主界面 | 播放与标记 | 剪辑设置 |
+|---|---|---|
+| ![主界面](resources/main.png) | ![播放与标记](resources/mark.png) | ![剪辑设置](resources/clip.png) |
+| 视频列表与批量操作 | 播放中用快捷键（`[` / `]`）标记起止 | 画质 / 水印样式 / 输出目录 |
+
 ## 应用场景
 
 围绕「批量标记 → 批量输出」这条核心链路，工具适用于以下常见场景：

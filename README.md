@@ -24,6 +24,13 @@ Focused on a single streamlined workflow: **Folder → Scan → Mark → Batch C
 | No GPU requirement | Works on pure CPU, **no CUDA / NVENC / VideoToolbox dependency** — runs smoothly on old laptops and desktops with integrated graphics |
 | Cross-platform packaging | One-command packaging for Windows / macOS / Linux via electron-builder; installer is only tens of MB |
 
+## Screenshots
+
+| Main Interface | Playback & Marking | Clip Settings |
+|---|---|---|
+| ![Main Interface](resources/main.png) | ![Playback & Marking](resources/mark.png) | ![Clip Settings](resources/clip.png) |
+| Video list with batch operations | Mark start / end while playing with keyboard shortcuts (`[` / `]`) | Quality, watermark style and output folder |
+
 ## Use Cases
 
 Centered on the core workflow of **batch marking → batch output**, this tool fits the following common scenarios:
