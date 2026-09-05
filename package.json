@@ -5,7 +5,7 @@
     "name": "Cooper",
     "email": "p.k.12345@foxmail.com"
   },
-  "description": "视频批量剪辑工具 - 基于 FFmpeg 的桌面端视频片段提取与命名水印工具",
+  "description": "An FFmpeg-based desktop tool for batch video cutting.",
   "license": "MIT",
   "main": "./out/main/index.js",
   "scripts": {
@@ -37,7 +37,7 @@
   },
   "build": {
     "appId": "com.batchcut.app",
-    "productName": "批量剪辑",
+    "productName": "BatchCut",
     "copyright": "Copyright © 2026",
     "directories": {
       "output": "dist"
@@ -74,7 +74,7 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "批量剪辑"
+      "shortcutName": "BatchCut"
     }
   }
 }
