@@ -1,6 +1,4 @@
 import { ipcMain, dialog, shell } from 'electron'
-import { join } from 'path'
-import { existsSync } from 'fs'
 import { VideoService, type ClipParams } from '../services/videoService'
 
 const videoService = new VideoService()
@@ -11,11 +9,13 @@ export function registerVideoHandlers(): void {
     return videoService.checkFfmpeg()
   })
 
-  // 打开 FFmpeg 安装教程（resources 目录下的 PDF，缺省回退到官方下载页）
-  ipcMain.handle('video:openFfmpegGuide', async () => {
-    // 未找到教程文件时，打开 FFmpeg 官方下载页
-    await shell.openExternal('https://gitee.com/AutumnBreeze/batch-cut/blob/master/resources/FFmpeg安装教程.pdf')
-    return { ok: true }
+  // 打开外部链接（仅允许 https，供教程弹窗等场景使用）
+  ipcMain.handle('video:openExternal', async (_event, url: string) => {
+    if (typeof url === 'string' && /^https:\/\//.test(url)) {
+      await shell.openExternal(url)
+      return { ok: true }
+    }
+    return { ok: false, error: 'invalid url' }
   })
 
   // 选择视频所在文件夹

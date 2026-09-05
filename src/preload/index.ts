@@ -21,7 +21,7 @@ const api = {
   // 视频处理
   video: {
     checkFfmpeg: () => ipcRenderer.invoke('video:checkFfmpeg'),
-    openFfmpegGuide: () => ipcRenderer.invoke('video:openFfmpegGuide'),
+    openExternal: (url: string) => ipcRenderer.invoke('video:openExternal', url),
     selectFolder: () => ipcRenderer.invoke('video:selectFolder'),
     scanFolder: (folderPath: string) => ipcRenderer.invoke('video:scanFolder', folderPath),
     selectOutputDir: () => ipcRenderer.invoke('video:selectOutputDir'),

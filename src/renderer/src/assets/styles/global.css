@@ -48,3 +48,36 @@ body,
 ::-webkit-scrollbar-thumb:hover {
   background: #aaa;
 }
+
+/* 弹窗关闭按钮：隐藏 naive-ui 自带的，改用与标题栏同款的自定义按钮（.modal-close-btn） */
+.n-modal .n-card-header__close {
+  display: none !important;
+}
+
+/* 自定义弹窗关闭按钮：绝对定位贴住卡片右上角（.n-card 为 position:relative），零留白热区 */
+.modal-close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  width: 48px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  transition: background 0.15s, color 0.15s;
+}
+
+.modal-close-btn:hover {
+  background: #e81123;
+  color: white;
+}
+
+.modal-close-btn:active {
+  background: #c50f1e;
+  color: white;
+}

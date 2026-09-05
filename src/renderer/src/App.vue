@@ -11,10 +11,18 @@ import {
   NAlert,
   zhCN,
   dateZhCN,
+  enUS,
+  dateEnUS,
   darkTheme
 } from 'naive-ui'
 import TitleBar from './components/TitleBar.vue'
+import FfmpegGuideModal from './components/FfmpegGuideModal.vue'
 import VideoProcessor from './pages/VideoProcessor.vue'
+import { locale, toggleLocale, t } from './i18n'
+
+// naive-ui 组件内置文案跟随语言
+const naiveLocale = computed(() => (locale.value === 'zh' ? zhCN : enUS))
+const naiveDateLocale = computed(() => (locale.value === 'zh' ? dateZhCN : dateEnUS))
 
 // ---------- FFmpeg 检测 ----------
 const ffmpegMissing = ref(false)
@@ -31,8 +39,11 @@ async function checkFfmpeg(): Promise<void> {
   }
 }
 
+// ---------- FFmpeg 安装教程弹窗 ----------
+const showGuide = ref(false)
+
 function openFfmpegGuide(): void {
-  window.api.video.openFfmpegGuide()
+  showGuide.value = true
 }
 
 // 主题切换（localStorage 持久化 + 跟随系统）
@@ -63,8 +74,8 @@ watch(theme, (t) => {
 })
 
 const themeLabel = computed(() => {
-  if (theme.value === 'system') return '跟随系统'
-  return isDark.value ? '深色' : '浅色'
+  if (theme.value === 'system') return t('theme.system')
+  return isDark.value ? t('theme.dark') : t('theme.light')
 })
 
 function toggleTheme(): void {
@@ -83,8 +94,8 @@ onMounted(async () => {
 <template>
   <NConfigProvider
     :theme="isDark ? darkTheme : null"
-    :locale="zhCN"
-    :date-locale="dateZhCN"
+    :locale="naiveLocale"
+    :date-locale="naiveDateLocale"
     class="app-root"
   >
     <NMessageProvider>
@@ -95,9 +106,22 @@ onMounted(async () => {
           <div class="page-header">
             <div class="header-title">
               <span class="title-icon">🎬</span>
-              <span class="title-text">视频批量剪辑</span>
+              <span class="title-text">{{ t('app.headerTitle') }}</span>
             </div>
             <NSpace align="center">
+              <NPopover trigger="hover" placement="bottom-end">
+                <template #trigger>
+                  <NButton quaternary size="small" :title="t('app.langHint')" @click="toggleLocale">
+                    <template #icon>
+                      <span>🌐</span>
+                    </template>
+                    {{ t('app.switchLang') }}
+                  </NButton>
+                </template>
+                <div style="font-size: 12px; line-height: 1.6;">
+                  {{ t('app.langHint') }}
+                </div>
+              </NPopover>
               <NPopover trigger="hover" placement="bottom-end">
                 <template #trigger>
                   <NButton quaternary size="small" @click="toggleTheme">
@@ -108,7 +132,7 @@ onMounted(async () => {
                   </NButton>
                 </template>
                 <div style="font-size: 12px; line-height: 1.6;">
-                  点击循环切换：跟随系统 → 浅色 → 深色
+                  {{ t('theme.popoverHint') }}
                 </div>
               </NPopover>
             </NSpace>
@@ -125,21 +149,23 @@ onMounted(async () => {
           :mask-closable="false"
           :closable="false"
           preset="card"
-          title="检测到 FFmpeg 未安装"
+          :title="t('ffmpeg.missingTitle')"
           style="max-width: 560px;"
         >
           <NAlert type="warning" :bordered="false" style="margin-bottom: 16px;">
-            <template #header>视频剪辑功能依赖 FFmpeg</template>
+            <template #header>{{ t('ffmpeg.missingHeader') }}</template>
             <div style="font-size: 13px; line-height: 1.7;">
-              本工具需要 <b>ffmpeg</b> 与 <b>ffprobe</b> 才能扫描视频信息、剪辑片段、叠加水印和生成封面。
-              当前未检测到可用的 FFmpeg，请先安装。
+              {{ t('ffmpeg.missingBody') }}
             </div>
           </NAlert>
           <NSpace justify="end">
-            <NButton @click="ffmpegMissing = false">稍后处理</NButton>
-            <NButton type="primary" @click="openFfmpegGuide">查看安装教程</NButton>
+            <NButton @click="ffmpegMissing = false">{{ t('ffmpeg.later') }}</NButton>
+            <NButton type="primary" @click="openFfmpegGuide">{{ t('ffmpeg.viewGuide') }}</NButton>
           </NSpace>
         </NModal>
+
+        <!-- FFmpeg 安装教程（应用内双语弹窗，离线可用） -->
+        <FfmpegGuideModal v-model:show="showGuide" />
       </div>
     </NMessageProvider>
   </NConfigProvider>

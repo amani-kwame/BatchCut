@@ -1,6 +1,6 @@
-# batch-cut
+# BatchCut
 
-**English | [简体中文](README_ZN.md)**
+**English | [简体中文](README_zh-CN.md)**
 
 An FFmpeg-based desktop tool for batch video cutting.
 
@@ -94,7 +94,7 @@ Following the design principle of "**no feature bloat, no resource hogging**", t
 | Final Cut Pro | ~ 4 GB | 2 - 6 GB | ⚠️ macOS only, needs Apple Silicon |
 | CapCut Desktop (Windows) | ~ 700 MB | 800 MB - 1.5 GB | ✅ Recommended |
 | HandBrake | ~ 80 MB | 100 - 200 MB | ❌ Not needed |
-| **batch-cut (this tool)** | **~ 60 - 90 MB** | **80 - 200 MB** | **❌ Not needed** |
+| **BatchCut (this tool)** | **~ 60 - 90 MB** | **80 - 200 MB** | **❌ Not needed** |
 
 ### 🪶 Measured Resource Usage (Windows 11 / i5-8250U / integrated graphics)
 
@@ -247,7 +247,7 @@ npm run dist:mac
 ## Project Structure
 
 ```
-batch-cut/
+BatchCut/
 ├── electron.vite.config.ts        # electron-vite configuration
 ├── package.json
 ├── tsconfig.json / .node.json / .web.json

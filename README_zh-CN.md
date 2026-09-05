@@ -1,4 +1,4 @@
-# 批量剪辑（batch-cut）
+# 批量剪辑（BatchCut）
 
 **[English](README.md) | 简体中文**
 
@@ -94,7 +94,7 @@
 | Final Cut Pro | ~ 4 GB | 2 - 6 GB | ⚠️ 仅 macOS，需 Apple Silicon |
 | 剪映专业版（Windows） | ~ 700 MB | 800 MB - 1.5 GB | ✅ 推荐 |
 | HandBrake | ~ 80 MB | 100 - 200 MB | ❌ 不需要 |
-| **batch-cut（本工具）** | **~ 60 - 90 MB** | **80 - 200 MB** | **❌ 不需要** |
+| **BatchCut（本工具）** | **~ 60 - 90 MB** | **80 - 200 MB** | **❌ 不需要** |
 
 ### 🪶 资源占用实测（Windows 11 / i5-8250U / 集显）
 
@@ -247,7 +247,7 @@ npm run dist:mac
 ## 项目结构
 
 ```
-batch-cut/
+BatchCut/
 ├── electron.vite.config.ts        # electron-vite 配置
 ├── package.json
 ├── tsconfig.json / .node.json / .web.json

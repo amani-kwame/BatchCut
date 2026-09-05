@@ -53,7 +53,7 @@ protocol.registerSchemesAsPrivileged([
 function createWindow(): void {
   mainWindow = new BrowserWindow({
     width: 1280,
-    height: 800,
+    height: 1000, // 保证播放/标记弹窗（内容约 900px）完整显示、不出现滚动条
     minWidth: 1024,
     minHeight: 680,
     show: false,

@@ -56,7 +56,7 @@ interface VideoClipResult {
 
 interface VideoAPI {
   checkFfmpeg: () => Promise<{ ffmpeg: boolean; ffprobe: boolean }>
-  openFfmpegGuide: () => Promise<{ ok: boolean; error?: string }>
+  openExternal: (url: string) => Promise<{ ok: boolean; error?: string }>
   selectFolder: () => Promise<string | null>
   scanFolder: (folderPath: string) => Promise<VideoFileInfo[]>
   selectOutputDir: () => Promise<string | null>
